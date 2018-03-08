@@ -18,7 +18,7 @@ void setup() {
   if (F_CPU == 16000000) clock_prescale_set(clock_div_1);
 #endif
 
-
+pinMode(5,INPUT);
   pixels.begin(); 
 }
 void loop() {
@@ -31,9 +31,15 @@ int LEDwert=analogRead(A3);
 int R=Rwert/4;
 int G=Gwert/4;
 int B=Bwert/4;
-int LED=LEDwert*(15/1023)+1; //k*x+d 
+int LED=LEDwert*(15.0/1023)+1; //k*x+d 
 for(int i=0; i<LED;i++){
 pixels.setPixelColor(i, pixels.Color(R,G,B));
 }
 pixels.show();
+for(int i=0;i<NUMPIXELS;i++)
+{
+pixels.setPixelColor(i, pixels.Color(0,0,0));
+}
+pixels.show();
+
 }
