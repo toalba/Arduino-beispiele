@@ -34,7 +34,7 @@ int LED=LEDwert*(15.0/1023)+1; //k*x+d
 if(digitalRead(5)==HIGH)
 {
   anfang=(anfang+1)%30;
-}
+
 for(int i= anfang; i<=anfang +LED-1;i++)
 {
   pixels.setPixelColor(i, pixels.Color(R,G,B));
@@ -47,3 +47,20 @@ for(int i= anfang; i<=anfang+LED-1;i++)
 }
 pixels.show();
 }
+else
+{
+  for(int i=0; i<LED;i++){
+pixels.setPixelColor(i, pixels.Color(R,G,B));
+}
+pixels.show();
+for(int i=0;i<NUMPIXELS;i++)
+{
+pixels.setPixelColor(i, pixels.Color(0,0,0));
+}
+pixels.show();
+}
+}
+
+
+
+
