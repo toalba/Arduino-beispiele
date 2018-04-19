@@ -5,7 +5,7 @@
 
 #define PIN            6
 
-#define NUMPIXELS      30
+#define NUMPIXELS      90
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
@@ -33,14 +33,14 @@ int B=Bwert/4;
 int LED=LEDwert*(15.0/1023)+1; //k*x+d 
 if(digitalRead(5)==HIGH)
 {
-  anfang=(anfang+1)%30;
+  anfang=(anfang+1)%NUMPIXELS;
 
 for(int i= anfang; i<=anfang +LED-1;i++)
 {
   pixels.setPixelColor(i, pixels.Color(R,G,B));
 }
 pixels.show();
-delay(20);
+delay(60);
 for(int i= anfang; i<=anfang+LED-1;i++)
 {
   pixels.setPixelColor(i, pixels.Color(0,0,0));
