@@ -15,13 +15,13 @@ void setup() {
 #if defined (__AVR_ATtiny85__)
   if (F_CPU == 16000000) clock_prescale_set(clock_div_1);
 #endif
-pixels.begin();
+pixels.begin(); 
   for(int i=15;i<20;i++)
 {
      pixels.setPixelColor(i,(156,156,156));
 
 }
-for(int i=15;i<=10;i--)
+for(int i=15;i>10;i--)
 {
      pixels.setPixelColor(i,(156,156,156));
 
@@ -33,18 +33,18 @@ void loop() {
 
   leds=analogRead(A2);
    lednr=(10.0/1023)*leds+5;
-   for(int i=0;i<lednr;i++)
+   for(int i=0;i<=lednr;i++)
    {
-     pixels.setPixelColor(i+15,(156,156,156));
-     pixels.setPixelColor(14-i,(156,156,156));
+     pixels.setPixelColor(i+14,(156,156,156));
+     pixels.setPixelColor(15-i,(156,156,156));
      
    }
    pixels.show();
    delay(10);
-      for(int i=0;i<=lednr;i++)
+   for(int i=0;i<=lednr;i++)
    {
-     pixels.setPixelColor(i+15,(0,0,0));
-     pixels.setPixelColor(14-i,(0,0,0));
+     pixels.setPixelColor(i+14,(0,0,0));
+     pixels.setPixelColor(15-i,(0,0,0));
      
    }
    pixels.show();
