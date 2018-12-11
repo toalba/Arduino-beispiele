@@ -1,0 +1,20 @@
+Kommunikation zwischen Ardoino und Pc
+
+Serial.begin(9600);   .... Startet kommunikation, 9600 gibt übertragungsgeschwindigkeit an
+Kommunikation am pc erfolgt mit serial-monitor. (lope am oberen rechten rand)
+Muss nur einmal ausgeführt werden im normalfall im setup.
+
+Serial.print[ln](...)  .... Ardoino sendet eine zeichenfolge an den serial monitor.
+
+Libaries:
+
+In ccp datei:
+
+Vor Methodenname wird Klassenbezeichnung angegeben:
+
+bsp.
+
+void CName:: Methodename()
+
+#define Ausdruck-A Ausdruck-B ....Sorgt dafür das im nachfolgenden Code Ausdruck A durch Ausdruck B ersetzt Wird, ist kein C-befehl (deshalb auch kein Strichpunkt am Endesonder eine Compilerdirektive die den Code verändert bevor er in Maschinensprachen übersetzt wird. 
+

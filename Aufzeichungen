@@ -1,0 +1,32 @@
+Ein weiter Taster:
+
+Eine Klasse Taster soll alle Taster Kontrollieren
+
+Konstructor:
+
+Legt fest auf welchen pin der taster ist und setzt diesen Pin auf Input.
+Methode mit Rückgabewert bool ist gedrückt.
+
+Methoden:
+
+SteigendeFlanke: 
+FallendeFlanke:
+   
+    geben an ob der Taster gerade gedrückt oder losgelassen wurde.Dazu muss der Zustand des Tasters laufend überprüft werden, damit jederzeit  der gerade gegebene zustand bekannt ist.--) in der loop muss bei jedem Durchlauf eine methode check aufgerufen werden. 
+
+weitere methoden:
+
+methoden zeitgedrückt und zeitlosgelassen sollen angeben:
+
+wie lange ein taster bereits gedrückt bzw. nicht gedrückt ist, wenn der taster zu dem zeitpunkt zu dem zeitgedrückt aufgerufen wird gar nicht gedrückt ist soll er 0 wiedergebe.
+
+Ändere Methode Zeitgedrückt das sie bei nichtgedrückten Taster nicht Null zurück gibt sondern die dauer des letzten tastendrucks.
+
+Verwende diese Methoden dazu um in der loop die LED an pin 6 im 0,2 secunden rütmus blinken zu lassen wenn die taste weniger als 1 Sekunde gedrückt wurde un im 1 Sekundenrythmus blinken zu lassen wenn die taste mehr wie eine sekunde gedrückt wurde.
+
+
+
+libary für eine simple bsp klasse:
+Klasse CZähler beinhaltet eine integer klassenvarialbe z zum zählen die mit 0 startet, einen constructor, eine methode erhöhe die z um 1 erhöht und einen getter für z(get zählerstand).
+
+Libaries   
