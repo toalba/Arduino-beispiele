@@ -1,0 +1,59 @@
+Übermitteln von Zahl an ASCII Zeichen:
+
+Roboremo ermittelt Zahlenwert von z.b einem Schieberegler als ASCII-Zeichen mit einer vorhergehenden kennung die in der App eingestellt werden kann.(ID) 
+
+--) Roboremo schickt Buchstabe mit kennung 
+
+	'V_170 (-'
+
+	Button schickt nur 'X (-'
+
+	(-...Zeilenvorschub, ASCII-Code 13
+
+Wenn wir uns drauf einigen die Kennung nur aus einem Buchstaben bestehen zu lassen,können bei Roboremo Anwendungen mit Buttons und Slider
+nur 2 Fälle auftreten.
+
+1.) Char+Enter; Button wurde betätigt.
+2.) Char+Space; Slider wurde betätigt.
+Wenn der Silder betätigt wurde müssen wir die Nachfolgenden Ziffern einlesen(ASCIIWert -48) und bei jeder neuen Ziffer den bisherigen Zahlenwert mit 10 multiplizieren und die ziffer addieren.solange bis \n kommt.
+
+Zahl=0;
+bei jeder neuen Ziffer:
+Zahl= Zahl*10+Ziffer;
+
+	Ziffer|Zahl
+	      |0
+	   1  | 0*10+1= 1
+	   7  | 1*10+7= 17
+	   0  | 17*10+0=170
+     \n= ENTER| fertig
+
+Wir müssen also einen Befehlsblock immer bis zum \n lesen bevor wir mit analogwrite die Geschwindigkeit setzten können.
+
+	if(serial.avaiable() > 0)
+	{
+	Kennung = myserial.read();
+	do
+	{
+	  while(Serial.avaiable == 0);  (*)
+	 Zeichen =serial.read();
+	if((Zeichen>=48) && (Zeichen<=57))
+	{
+	  Ziffer= Zeichen -48;
+	  Zahl= Zahl*10+Ziffer;
+	}
+        }while(Zeichen!='\n');
+
+Ob die Variable Zeichen als Char oder als Bit oder Int definiert wird ist egal, weil C beim Arbeiten mit Charaktern ohnehin mit dem ASCII Code Arbeitet. Nachteil dieser 2 Verschachtelten while schleifen:Einlesen eines Befehlsblocks bis zum \n blockiert den Ardoino. Wenn die Übertragung mitm im Block ganz abbricht bleibt der Ardoino ewig in der (*)-Schleife hängen.
+
+AufgabenStellung:
+6.)Mit 2 Bytes soll der motor vor und zurück laufen. 
+
+7.)
+ a.)
+   Ohne Fernsteuerung:
+   Motor soll jeweils 3sec lang mit 5 Unterschiedlichen Geschwindigkeiten laufen analogWrite(), und dabei bei jedem schritt die Richtung  
+   wechseln. Achtung: beim umkehren der Drehrichtung muss Pin B auf High gelegt werden und vom PWM wert des Pins A von 255 abgezogen werden,
+   weil jz Strom fließt wenn der Pin A low ist. 
+ b.)
+   Vom Robormo aus sollen sich mehrere Buttons unterschiedliche Geschwindigkeiten einstellen lassen. 

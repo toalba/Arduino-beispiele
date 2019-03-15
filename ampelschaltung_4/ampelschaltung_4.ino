@@ -1,6 +1,7 @@
 #define grueneLED 5
 #define roteLED 6
 #define button1 3
+#define button2 2
 #define dr digitalRead
 #define dw digitalWrite
 
@@ -74,6 +75,7 @@ void setup() {
   pinMode(roteLED,OUTPUT);
   pinMode(grueneLED,OUTPUT);
   pinMode(button1, INPUT);
+  pinMode(button2, INPUT);
 }
 
 void loop() {

@@ -1,0 +1,46 @@
+Besprechung Test am 17.12.2018:
+
+1.)
+
+private:
+
+float minimum = 1000;
+float summme = 0;
+int zaehler = 0;
+
+public:
+
+float getMinimum()
+{
+return minimum;
+}
+
+float getmittelwert()
+{
+return summe/zaehler;
+}
+
+void messen()
+{
+
+if(temperatur<minimum)
+{
+minimum = temperatur;
+}
+
+summe = summe + temperatur;
+zaehler++;
+
+void resetmittlwert()
+{
+Summe=0;
+zaehler=0;
+}
+
+Finit State maschine beim test so nicht als totmanschalter zugebrauchen,
+Besser:
+Alarm wird ausgelöst wenn di tatse 10sec lang ihren zustand nicht ändert.
+---) neuer zustand ungleich alter zustand.
+---)neuer zustand ist digitalRead(6) in der bubble warten. 
+
+
