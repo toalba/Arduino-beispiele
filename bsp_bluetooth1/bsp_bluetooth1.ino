@@ -1,4 +1,4 @@
-
+#include <Arduino.h>
 #include <SoftwareSerial.h>
 
 SoftwareSerial mySerial(10, 11); // RX, TX
