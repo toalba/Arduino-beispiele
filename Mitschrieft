@@ -57,3 +57,43 @@ AufgabenStellung:
    weil jz Strom fließt wenn der Pin A low ist. 
  b.)
    Vom Robormo aus sollen sich mehrere Buttons unterschiedliche Geschwindigkeiten einstellen lassen. 
+
+
+bsp. 
+Schließe 5 Byte die eine ASCII bedeutung haben und darauf ein Bit mit der bedeutung einer Zahl.
+
+I²C Wire:
+Wire.begin() stehlt I²C(-Bus,für Singltranssysteme braucht man keine Adresse)
+
+Wire.beginTransmission(Adresse)   }
+Wire.write()                      }  Master sendet daten an slave      
+Wire.endTransmission()            }
+
+Wire.onreceiver(Name der ISR) (Aktivier den Interupt der Ausgelöst wird wenn der Slave Daten vom Master empfängt.
+Wire.avaible
+Wire.read
+
+Wire.onrequest(Name der ISR) (Aktiviert den Interupt für Datenanfrage an den Slave 
+
+Slavereciever:
+
+Wenn Slave mit I²C Bus über seine Adresse angesprochen wird so löst das einen Interupt aus, der die Loop unterbricht. Die entsprechende Interupt service-routine muss sich um das einlesen der Daten kümmern.
+im bsp.
+Alle bis auf das letzte Byte werden als Charakter(Char) eingelesen, das letzte Byte als Integer.
+Slave braucht nicht von vorrein wissen wie viele Bytes der Master sendet weil der Master die Übertragung mit einem Stop-Steuersignal abschließt.
+
+bsp. Masterreader:
+
+Master muss die Anzahl der Bytes die er vom Slave erhält von vornehinein wissen weil vom slave kein stopsignal kommt sondern dies immer durch den master erfolgt.
+
+bsp. Slavesender:
+
+Datenanfrage durch den Master löst einen Interupt aus indem der slave in der Interupt-serviceroutine die daten schickt.
+
+bsp:
+
+Master schickt an den Slave 1 Byte, dass die Blinkzeit der LED 13 des Slave in hunderstl sekunden angibt max.zeit 2,5 sekunden.
+Master schickt alle 10 sekunden einen neuen wert für die Blinkzeit 1/2 Sekunde 1 Sekunde , 1,5 Sekunden , 2 Sekunden.
+
+
+
