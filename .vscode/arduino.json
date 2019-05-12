@@ -1,5 +1,6 @@
 {
-    "programmer": "Atmel JTAGICE3 (ISP mode)",
+    "programmer": "AVRISP mkII",
     "port": "/dev/ttyS0",
-    "board": "Nano"
+    "board": "arduino:avr:diecimila",
+    "configuration": "cpu=atmega328"
 }

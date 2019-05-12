@@ -95,5 +95,9 @@ bsp:
 Master schickt an den Slave 1 Byte, dass die Blinkzeit der LED 13 des Slave in hunderstl sekunden angibt max.zeit 2,5 sekunden.
 Master schickt alle 10 sekunden einen neuen wert für die Blinkzeit 1/2 Sekunde 1 Sekunde , 1,5 Sekunden , 2 Sekunden.
 
+Clock-Synchronisation und Arbitrierung:
+
+Nur relevant bei Multi-Master Systeme,weil kein Prüfungsstoff.
+
 
 
