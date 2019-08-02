@@ -4,9 +4,11 @@
             "name": "Linux",
             "includePath": [
                 "/home/toalba/arduino/tools/**",
+                "/home/toalba/arduino/libraries**",
                 "/home/toalba/arduino/hardware/arduino/avr/**",
                 "${workspaceFolder}/**",
-                "/home/toalba/Arduino/**"
+                "/home/toalba/Arduino/**",
+                "/home/toalba/Arduino/libraries**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

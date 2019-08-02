@@ -2,5 +2,6 @@
     "programmer": "AVRISP mkII",
     "port": "/dev/ttyS0",
     "board": "arduino:avr:diecimila",
-    "configuration": "cpu=atmega328"
+    "configuration": "cpu=atmega328",
+    "sketch": "LED_1/LED_1.ino"
 }
