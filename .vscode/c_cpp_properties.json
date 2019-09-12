@@ -3,6 +3,7 @@
         {
             "name": "Linux",
             "includePath": [
+                "/home/toalba/Arduino/libraries/MsTimer2",
                 "/home/toalba/arduino/tools/**",
                 "/home/toalba/arduino/libraries**",
                 "/home/toalba/arduino/hardware/arduino/avr/**",
