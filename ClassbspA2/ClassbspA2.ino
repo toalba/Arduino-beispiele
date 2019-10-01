@@ -45,17 +45,6 @@ class CBlinkLED
       blinkenAktiv=false;
     }
 
-    void startBlink(long int blinkZeit0)
-    {
-      blinkZeit = blinkZeit0;
-      blinkenAktiv = true;
-    }
-
-    void stopBlink()
-    {
-      blinkenAktiv = false;
-    }
-
     long int zeitAn()
     {
       if (isOn())
@@ -84,10 +73,17 @@ class CBlinkLED
 
     void check()
     {
-      if (blinkenAktiv && (millis() > letzteBlinkZeit + blinkZeit))
+
+      if(!blink4ever && blinkenAktiv && (millis() > letzteBlinkZeit + blinkZeit))
       {
         umschalten();
         letzteBlinkZeit = millis();
+      }
+      else if (blinkenAktiv && (millis() > letzteBlinkZeit + blinkZeit)&& (anzahl>0))
+      {
+        umschalten();
+        letzteBlinkZeit = millis();
+        anzahl--;
       }
     
       bool jetzigerWert = digitalRead(pinNr);
@@ -105,7 +101,7 @@ class CBlinkLED
       blink4ever=true;
     }
 
-    void blinken(int anzahl0,long int blinkZeit0)
+    void blinken(long int blinkZeit0,int anzahl0)
     {
       blinkZeit = blinkZeit0;
       anzahl=anzahl0;
@@ -117,7 +113,7 @@ class CBlinkLED
 CBlinkLED led13(13);
 void setup()
 {
-led13.startBlink(1000);
+led13.blinken(1000);
 }
 void loop()
 {
