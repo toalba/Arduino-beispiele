@@ -109,8 +109,47 @@ class CBlinkLED
     }
 
 };
+class CButton
+{
+  private:
+  int pinNr;
+  boolean steigFlanke;
+  boolean fallFlanke;
+  boolean letzterWert;
+
+  public:
+  CButton(int pinNr0)
+  {
+    pinNr=pinNr0;
+    pinMode(pinNr, INPUT);
+
+  }
+  boolean ispresed()
+  {
+    return digitalRead(pinNr);
+  }
+
+  void check()
+  {
+      boolean jetzigerWert = ispresed();
+      steigFlanke = !letzterWert && jetzigerWert;
+      fallFlanke = letzterWert && !jetzigerWert;
+      letzterWert = jetzigerWert;
+
+  }
+      boolean steigendeFlanke()
+    {
+      return steigFlanke;
+    }
+
+    boolean fallendeFlanke()
+    {
+      return fallFlanke;
+    }
+};
 
 CBlinkLED led13(13);
+CButton button5(5);
 void setup()
 {
 led13.blinken(1000);
@@ -118,4 +157,11 @@ led13.blinken(1000);
 void loop()
 {
  led13.check();
+ button5.check();
+if(button5.steigendeFlanke())
+{
+  led13.blinken(500);
+}
+
+
 }
