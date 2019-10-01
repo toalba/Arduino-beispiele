@@ -3,5 +3,5 @@
     "port": "/dev/ttyUSB0",
     "board": "arduino:avr:nano",
     "configuration": "cpu=atmega328old",
-    "sketch": "LED_1/LED_1.ino"
+    "sketch": "ClassbspA2/ClassbspA2.ino"
 }
