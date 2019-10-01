@@ -116,11 +116,15 @@ class CButton
   boolean steigFlanke;
   boolean fallFlanke;
   boolean letzterWert;
+  int prellzeit;
+  int settime;
+  int zeitgedrueckt;
 
   public:
-  CButton(int pinNr0)
+  CButton(int pinNr0,int prellzeit0)
   {
     pinNr=pinNr0;
+    prellzeit=prellzeit0;
     pinMode(pinNr, INPUT);
 
   }
@@ -130,12 +134,27 @@ class CButton
   }
 
   void check()
-  {
+  {   
+      static int zeitzw;
+      static int zeitda;
       boolean jetzigerWert = ispresed();
       steigFlanke = !letzterWert && jetzigerWert;
       fallFlanke = letzterWert && !jetzigerWert;
       letzterWert = jetzigerWert;
-
+    if(steigFlanke)
+    {
+      settime=millis();
+    }
+    if(millis()>=(settime+prellzeit))
+    {
+      zeitda=true;
+      zeitzw=millis();
+    }
+    if(fallFlanke && zeitda)
+    {
+      zeitgedrueckt=millis()-zeitzw;
+      zeitda=false;
+    }
   }
       boolean steigendeFlanke()
     {
@@ -146,10 +165,14 @@ class CButton
     {
       return fallFlanke;
     }
+    boolean zeitGedrueckt()
+    {
+      return zeitgedrueckt;
+    }
 };
 
 CBlinkLED led13(13);
-CButton button5(5);
+CButton button5(5,100);
 void setup()
 {
 led13.blinken(1000);
@@ -160,7 +183,7 @@ void loop()
  button5.check();
 if(button5.steigendeFlanke())
 {
-  led13.blinken(500);
+  led13.blinken(500,5);
 }
 
 
