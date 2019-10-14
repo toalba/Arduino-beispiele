@@ -113,12 +113,14 @@ class CButton
 {
   private:
   int pinNr;
-  boolean steigFlanke;
-  boolean fallFlanke;
+  boolean falling;
+  boolean rising;
   boolean letzterWert;
   int prellzeit;
-  int settime;
+  long int settimest;
+  long int settimefa;
   int zeitgedrueckt;
+  boolean jetzigerWert;
 
   public:
   CButton(int pinNr0,int prellzeit0)
@@ -134,57 +136,66 @@ class CButton
   }
 
   void check()
-  {   
-      static int zeitzw;
-      static int zeitda;
-      boolean jetzigerWert = ispresed();
-      steigFlanke = !letzterWert && jetzigerWert;
-      fallFlanke = letzterWert && !jetzigerWert;
+  {
+    static bool letzterWert = false;
+    bool jetzigerWert;
+    static long int risingTime;
+    static int letzteZeit;
+    bool pressed;
+    static bool oldPressed;
+
+
+    jetzigerWert = ispresed();
+      if(!letzterWert && jetzigerWert){
+        risingTime = millis();
+      }
+      if((millis() >= risingTime + prellzeit)&&jetzigerWert)
+      {
+        pressed = jetzigerWert;
+      }
       letzterWert = jetzigerWert;
-    if(steigFlanke)
-    {
-      settime=millis();
-    }
-    if(millis()>=(settime+prellzeit))
-    {
-      zeitda=true;
-      zeitzw=millis();
-    }
-    if(fallFlanke && zeitda)
-    {
-      zeitgedrueckt=millis()-zeitzw;
-      zeitda=false;
-    }
+
+      rising = pressed && !oldPressed;
+      falling = !pressed && oldPressed;
+
+      oldPressed=pressed;
   }
       boolean steigendeFlanke()
     {
-      return steigFlanke;
+      return rising;
     }
-
     boolean fallendeFlanke()
     {
-      return fallFlanke;
+      return falling;
     }
     boolean zeitGedrueckt()
     {
       return zeitgedrueckt;
     }
+    boolean jetzigWert()
+    {
+      return jetzigerWert;
+    }
 };
 
 CBlinkLED led13(13);
-CButton button5(5,100);
+CButton button5(7,100);
 void setup()
 {
+  Serial.begin(9600);
 led13.blinken(1000);
 }
 void loop()
 {
+  int i=0;
  led13.check();
  button5.check();
-if(button5.steigendeFlanke())
+ if(button5.steigendeFlanke())
 {
-  led13.blinken(500,5);
+ i++;
 }
+Serial.println(i);
+
 
 
 }
