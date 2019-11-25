@@ -1,7 +1,7 @@
 {
-    "programmer": "AVR ISP",
+    "programmer": "AVRISP mkII",
     "port": "/dev/ttyUSB0",
-    "board": "arduino:avr:diecimila",
+    "board": "arduino:avr:nano",
     "sketch": "ClassbspA2/ClassbspA2.ino",
     "configuration": "cpu=atmega328"
 }

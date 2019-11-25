@@ -18,3 +18,5 @@ void CName:: Methodename()
 
 #define Ausdruck-A Ausdruck-B ....Sorgt dafür das im nachfolgenden Code Ausdruck A durch Ausdruck B ersetzt Wird, ist kein C-befehl (deshalb auch kein Strichpunkt am Endesonder eine Compilerdirektive die den Code verändert bevor er in Maschinensprachen übersetzt wird. 
 
+pinMode(3,INPUT_PULLUP)---) DR liefert low wenn der Pin auf Masse geschalten wird, also wenn der Schalter geschlossen wird---) negative logik.
+
